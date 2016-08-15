@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
-import { Tag } from 'antd';
+import { Tag , DatePicker } from 'antd';
+const MonthPicker = DatePicker.MonthPicker;
 export default class Footer extends Component {
  
   rendFilter(filter,name){
@@ -18,8 +19,9 @@ export default class Footer extends Component {
     return (
     <div className="tag">
       {this.rendFilter('SHOW_ALL','全部')}
-      {this.rendFilter('SHOW_COMPLETE','已完成')}
-      {this.rendFilter('SHOW_ACTIVE','未完成')}
+      {this.rendFilter('SHOW_COMPLETE','已确认')}
+      {this.rendFilter('SHOW_ACTIVE','未确认')}   
+      <MonthPicker defaultValue={new Date()} format="yyyy-MM-dd" style={{margin:20}}/>
     </div>
     )
   }

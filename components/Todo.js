@@ -1,19 +1,21 @@
 import React, { Component, PropTypes } from 'react';
-import { Table } from 'antd';
+import {  Card, Col, Row  } from 'antd';
 export default class Todo extends Component {
   render() {
     return (
-      <p onClick={this.props.onClick} style={{
-          textDecoration: this.props.isDone? 'line-through' : 'none'
+      <Row>
+        <Col span="8" onClick={this.props.onClick} style={{
+          textDecoration: this.props.isDone ? 'line-through' : 'none'
         }}>
-        {this.props.text}
-      </p>
+          <Card  bordered={false}>{this.props.text.money}</Card>
+        </Col>
+        <Col span="8">
+          <Card  bordered={false}>{this.props.text.bz}</Card>
+        </Col>
+        <Col span="8">
+          <Card  bordered={false}>{this.props.text.date}</Card>
+        </Col>
+      </Row>
     )
   }
-}
-
-Todo.propTypes = {
-  onClick: PropTypes.func.isRequired,
-  text: PropTypes.string.isRequired,
-  isDone: PropTypes.bool.isRequired
 }
