@@ -1,0 +1,5 @@
+{
+  "presets": [ "react", "es2015", "stage-0" ],//,
+  //"plugins": ["antd", { "style": true }]  //CSS和JS按需加载，babel-antd
+  "plugins": [["antd", [{ "libraryName": "antd", "style": true }]]]
+}
