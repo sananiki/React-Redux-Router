@@ -28,7 +28,7 @@ export default class TodoList extends Component {
 
         ) }
 
-        <div><Alert message={"总金额：" + this.total} type="info" /></div>
+        <div><Alert message={"总金额：" + this.total} type="info" showIcon/></div>
       </div>
     )
   }
