@@ -45,8 +45,8 @@ export default class AddTodo extends Component {
     )
   }  
     handleChange(date) {
-    const date_time=date.toString();
-    console.log(date_time)
+    this.date_time=date.toString();
+    console.log(this.date_time)
 
   }
    
@@ -58,14 +58,15 @@ export default class AddTodo extends Component {
     const bz_value = bz_node.value.trim()
    // const date_time_value = this.refs.date_time.refs.input.value.trim()
 
-    text = {
+    var text = {
       money:sa_value,
-      date:date_time,
+      date:this.date_time,
       bz:bz_value
     }
-    message.info('您增加的是: ' + text);
-    this.props.onAdd(text)
-    sa.value = ''
+    console.log(text)
+    //message.info('您增加的是: ' + text);
+    //this.props.onAdd(text)
+    sa_node.value = ''
   }
 }
 AddTodo = Form.create()(AddTodo);
