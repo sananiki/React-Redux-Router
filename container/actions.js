@@ -13,7 +13,8 @@ export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER';
 export const VisibilityFilters = {
     SHOW_ALL : 'SHOW_ALL',
     SHOW_COMPLETE : 'SHOW_COMPLETE',
-    SHOW_ACTIVE : 'SHOW_ACTIVE'
+    SHOW_ACTIVE : 'SHOW_ACTIVE',
+    SHOW_MONTH : 'SHOW_MONTH'
 }
 /**
  * action创建函数

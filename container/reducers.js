@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux' //合并两个reducers
-import { ADD_TODO, TOGGLE_TODO, SET_VISIBILITY_FILTER, VisibilityFilters } from './actions';
+import Format from '../include/date'  //自定义时间用法
+import { ADD_TODO, TOGGLE_TODO, SET_VISIBILITY_FILTER, VisibilityFilters,MONTH_FILTER } from './actions';
 const { SHOW_ALL } = VisibilityFilters
 function todos(state = [], action) {
     switch (action.type) {
@@ -38,11 +39,12 @@ function todos(state = [], action) {
     }
 }
 
-function visibilityFilter(state = SHOW_ALL, action) {
+function visibilityFilter(state = {filter:'SHOW_MONTH',value:new Date().Format('yyyy-MM')}, action) {  //问题在这！
     switch (action.type) {      
         case SET_VISIBILITY_FILTER:
         //console.log("过滤："+SET_VISIBILITY_FILTER)
             return action.filter
+            console.log("过滤的是"+action.filter)
         default:
             return state
     }

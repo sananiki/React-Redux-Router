@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import AddTodo from '../components/Addtodo'
 import TodoList from '../components/Todolist'
 import Footer from '../components/Footer'
-import { connect } from 'react-redux'
+import { connect } from 'react-redux' 
 import { addTodo, toggleTodo, setVisibilityFilter, VisibilityFilters } from './actions'
 //var datas = [
 //{text: "This is one comment",atuh:"sananiki"},
@@ -37,18 +37,21 @@ import { addTodo, toggleTodo, setVisibilityFilter, VisibilityFilters } from './a
 
 
 function selectTodos(todos, filter) {
-  switch (filter) {
+  switch (filter.filter) {
     case VisibilityFilters.SHOW_ALL:
       return todos
     case VisibilityFilters.SHOW_COMPLETE:
       return todos.filter(todo => todo.isDone)
     case VisibilityFilters.SHOW_ACTIVE:
       return todos.filter(todo => !todo.isDone)
+    case VisibilityFilters.SHOW_MONTH:
+      return todos.filter(todo =>todo.text.date.substr(0,7)==filter.value)
   }
 }
 // 基于全局 state ，哪些是我们想注入的 props ?
 // 注意：使用 https://github.com/reactjs/reselect 效果更佳。
 function select(state) {
+  console.log(state)
   return {
     visibleTodos: selectTodos(state.todos, state.visibilityFilter),
     visibilityFilter: state.visibilityFilter
