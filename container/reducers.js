@@ -70,7 +70,7 @@ function visibilityFilter(state = { filter: 'SHOW_MONTH', value: new Date().Form
         case SET_VISIBILITY_FILTER:
             //console.log("过滤："+SET_VISIBILITY_FILTER)
             return action.filter
-            console.log("过滤的是" + action.filter)
+            //console.log("过滤的是" + action.filter)
         default:
             return state
     }
