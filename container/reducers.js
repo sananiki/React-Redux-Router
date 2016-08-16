@@ -1,12 +1,27 @@
 import { combineReducers } from 'redux' //合并两个reducers
 import Format from '../include/date'  //自定义时间用法
-import { ADD_TODO, TOGGLE_TODO, SET_VISIBILITY_FILTER, VisibilityFilters,MONTH_FILTER } from './actions';
+import { ADD_TODO, TOGGLE_TODO, SET_VISIBILITY_FILTER, VisibilityFilters, MONTH_FILTER } from './actions';
+import $ from 'jquery'
 const { SHOW_ALL } = VisibilityFilters
+
 function todos(state = [], action) {
     switch (action.type) {
         case ADD_TODO:
             console.log(state)
             console.log("执行增加操作")
+            $.ajax({
+                url: "http://www.top-hill.cn/home/File/ajax",
+               // dataType: 'json',
+                type: 'POST',
+                data: {
+                    text: action.text,
+                    isDone: false
+                },
+                success: function (data) {
+                    console.log("success")
+                    // this.setState({data: data});
+                }
+            });
             return [
                 ...state,
                 {
@@ -14,7 +29,7 @@ function todos(state = [], action) {
                     isDone: false
                 }
             ]   //添加功能
-            
+
         case TOGGLE_TODO://标记完成的功能
             /* 写法一：
              return [
@@ -34,17 +49,26 @@ function todos(state = [], action) {
                 return todo  //下标不等于 index的时候，直接返回todo
             })
         default:
-            return state;
+            $.ajax({
+                url: "http://www.top-hill.cn/home/File/ajax",
+                dataType: 'json',
+                async: false,
+                success: function (data) {
+                    state = data
+                    // this.setState({data: data});
+                }
+            });
+            return state
 
     }
 }
 
-function visibilityFilter(state = {filter:'SHOW_MONTH',value:new Date().Format('yyyy-MM')}, action) {  //问题在这！
-    switch (action.type) {      
+function visibilityFilter(state = { filter: 'SHOW_MONTH', value: new Date().Format('yyyy-MM') }, action) {  //问题在这！
+    switch (action.type) {
         case SET_VISIBILITY_FILTER:
-        //console.log("过滤："+SET_VISIBILITY_FILTER)
+            //console.log("过滤："+SET_VISIBILITY_FILTER)
             return action.filter
-            console.log("过滤的是"+action.filter)
+            console.log("过滤的是" + action.filter)
         default:
             return state
     }
