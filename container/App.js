@@ -3,6 +3,7 @@ import AddTodo from '../components/Addtodo'
 import TodoList from '../components/Todolist'
 import Footer from '../components/Footer'
 import { connect } from 'react-redux' 
+import $ from 'jquery'
 import { addTodo, toggleTodo, setVisibilityFilter, VisibilityFilters } from './actions'
 //var datas = [
 //{text: "This is one comment",atuh:"sananiki"},
@@ -10,10 +11,31 @@ import { addTodo, toggleTodo, setVisibilityFilter, VisibilityFilters } from './a
 //];
 
  class App extends Component {
+   /*loadCommentsFromServer=function() {
+    $.ajax({
+      url: url,
+      dataType: 'text',
+      cache: false,
+      success: function(data) {
+        console.log(data)
+       // this.setState({data: data});
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.error(url, status, err.toString());
+      }.bind(this)
+    });
+  }
+    componentDidMount= function() {
+    loadCommentsFromServer();
+    setInterval(this.loadCommentsFromServer, pollInterval);
+  }*/
   render() {
     // 通过调用 connect() 注入:
-    const { dispatch, visibleTodos, visibilityFilter } = this.props
-    //console.log(visibleTodos)
+    const { dispatch, visibleTodos, visibilityFilter,url,pollInterval } = this.props
+    console.log("this.props")
+    console.log(this.props)
+    
+
     return (
       <div style={{ width: 400, margin: '100px auto' }}>
         <AddTodo onAdd={text =>
@@ -51,7 +73,7 @@ function selectTodos(todos, filter) {
 // 基于全局 state ，哪些是我们想注入的 props ?
 // 注意：使用 https://github.com/reactjs/reselect 效果更佳。
 function select(state) {
-  console.log(state)
+  console.log("appjs=>select:"+state)
   return {
     visibleTodos: selectTodos(state.todos, state.visibilityFilter),
     visibilityFilter: state.visibilityFilter

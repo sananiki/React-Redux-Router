@@ -51,13 +51,21 @@ export default class AddTodo extends Component {
   handleChange(date) {
     this.date_time = date.Format("yyyy-MM-dd");
     console.log(this.date_time)
-
+    
   }
 
   handleClick = (e) => {
     const sa_node = this.refs.sa.refs.input
     //console.log(sa_node)
     const sa_value = sa_node.value.trim()
+    if(sa_value =='' || sa_value == null){
+      message.info("金额选项必填，否则无法录入")
+      return //停止运行下面的代码
+    }
+    if(isNaN(sa_value)){
+      message.info("金额必须为数字")
+      return //停止运行下面的代码
+    }
     const bz_node = this.refs.bz.refs.input
     const bz_value = bz_node.value.trim()
     // const date_time_value = this.refs.date_time.refs.input.value.trim()

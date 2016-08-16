@@ -10,8 +10,8 @@ let store = createStore(todoApp);
 let rootElement = document.getElementById('root');
 
 ReactDOM.render(
-    <Provider store={store}>
-        <App />
+    <Provider store={store} pollInterval={2000}>
+        <App url="http://www.top-hill.cn/home/File/ajax"/>
     </Provider>,
     rootElement
 )
