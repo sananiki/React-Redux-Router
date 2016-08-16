@@ -11,10 +11,12 @@ function todos(state = [], action) {
             console.log("执行增加操作")
             $.ajax({
                 url: "http://www.top-hill.cn/home/File/ajax",
-               // dataType: 'json',
+                // dataType: 'json',
                 type: 'POST',
                 data: {
-                    text: action.text,
+                    money: action.text.money,
+                    date:action.text.date,
+                    bz:action.text.bz,
                     isDone: false
                 },
                 success: function (data) {
@@ -51,8 +53,8 @@ function todos(state = [], action) {
         default:
             $.ajax({
                 url: "http://www.top-hill.cn/home/File/ajax",
-                dataType: 'json',
-                async: false,
+                //dataType: 'json',
+                async: false, // 同步
                 success: function (data) {
                     state = data
                     // this.setState({data: data});

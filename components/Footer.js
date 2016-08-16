@@ -39,8 +39,8 @@ export default class Footer extends Component {
     return (
       <div className="tag">
         {this.rendFilter({filter:'SHOW_ALL',value:''}, '全部') }
-        {this.rendFilter({filter:'SHOW_COMPLETE',value:''}, '已确认') }
-        {this.rendFilter({filter:'SHOW_ACTIVE',value:''}, '未确认') }
+        {this.rendFilter({filter:'SHOW_COMPLETE',value:''}, '删除') }
+        {this.rendFilter({filter:'SHOW_ACTIVE',value:''}, '确认') }
         <MonthPicker defaultValue={new Date() } format="yyyy-MM-dd" style={{ margin: 20 }} onChange={value => this.handleChange(value) }/>
       </div>
     )
