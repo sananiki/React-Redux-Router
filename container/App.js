@@ -73,7 +73,7 @@ function selectTodos(todos, filter) {
 // 基于全局 state ，哪些是我们想注入的 props ?
 // 注意：使用 https://github.com/reactjs/reselect 效果更佳。
 function select(state) {
-  console.log("appjs=>select:"+state)
+  console.log(state)
   return {
     visibleTodos: selectTodos(state.todos, state.visibilityFilter),
     visibilityFilter: state.visibilityFilter
