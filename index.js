@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore ,applyMiddleware} from 'redux';
+import { createStore ,applyMiddleware,compose} from 'redux';
 import { Provider } from 'react-redux';
 import todoApp from './container/reducers'
 import App from './container/App'
@@ -13,7 +13,7 @@ import 'antd/dist/antd.css';
   return result
 }*/ //自定义日志输出
 
-let createStoreWithMiddleware = applyMiddleware( createLogger())(createStore) //dispath输出
+let createStoreWithMiddleware = compose(applyMiddleware( createLogger()),window.devToolsExtension ? window.devToolsExtension() : f => f)(createStore) //dispath输出
 //let store = createStore(todoApp);
 let store = createStoreWithMiddleware(todoApp); //增加日志输出console
 let rootElement = document.getElementById('root');
