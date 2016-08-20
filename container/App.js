@@ -4,7 +4,7 @@ import TodoList from '../components/Todolist'
 import Footer from '../components/Footer'
 import { connect } from 'react-redux' 
 import $ from 'jquery'
-import { addTodo, toggleTodo, setVisibilityFilter, VisibilityFilters } from './actions'
+import { addTodo, toggleTodo, setVisibilityFilter, VisibilityFilters,remove } from './actions'
 //var datas = [
 //{text: "This is one comment",atuh:"sananiki"},
 //{text: "This is *another* comment",atuh:"gods"}
@@ -37,7 +37,7 @@ import { addTodo, toggleTodo, setVisibilityFilter, VisibilityFilters } from './a
     
 
     return (
-      <div style={{ width: 400, margin: '100px auto' }}>
+      <div style={{ width: 550, margin: '100px auto' }}>
         <AddTodo onAdd={text =>
           dispatch(addTodo(text))
         } />
@@ -45,7 +45,12 @@ import { addTodo, toggleTodo, setVisibilityFilter, VisibilityFilters } from './a
           todos={visibleTodos}
           changeTodoState={key =>
             dispatch(toggleTodo(key))
-          }/>
+          }
+
+          reMoveState={key=>
+            dispatch(remove(key))
+          }
+          />
         <Footer
           filter={visibilityFilter}
           onFilterChange={nextFilter =>

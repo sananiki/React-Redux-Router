@@ -10,21 +10,24 @@ export default class TodoList extends Component {
     return (
       <div style={{ background: '#ECECEC', padding: '20px' }}>
         <Row>
-          <Col span="8">
+          <Col span="6">
             <Card title="金额" bordered={false} bodyStyle={{ padding: 0 }}></Card>
           </Col>
-          <Col span="8">
+          <Col span="6">
             <Card title="用途" bordered={false} bodyStyle={{ padding: 0 }}></Card>
           </Col>
-          <Col span="8">
+          <Col span="6">
             <Card title="时间" bordered={false} bodyStyle={{ padding: 0 }}></Card>
+          </Col>
+          <Col span="6">
+            <Card title="设置" bordered={false} bodyStyle={{ padding: 0 }}></Card>
           </Col>
         </Row>
 
         {this.props.todos.map((todo, index) =>
           <Todo {...todo}
-            key={index}
-            onClick={() => this.props.changeTodoState(todo.key) } />
+            key={index} 
+            onClick={() => this.props.changeTodoState(todo.key) }  reMove={()=>this.props.reMoveState(todo.key)}/>
 
         ) }
 
