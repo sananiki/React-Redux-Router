@@ -7,7 +7,7 @@ const { SHOW_ALL } = VisibilityFilters
 function todos(state = [], action) {
     switch (action.type) {
         case ADD_TODO:
-            console.log(state)
+           /* console.log(state)
             console.log("执行增加操作")
             $.ajax({
                 url: "http://www.top-hill.cn/home/File/ajax",
@@ -23,13 +23,10 @@ function todos(state = [], action) {
                     console.log("success")
                     // this.setState({data: data});
                 }
-            });
+            });*/
             return [
                 ...state,
-                {
-                    text: action.text,
-                    isDone: false
-                }
+                action.payload
             ]   //添加功能
 
         case TOGGLE_TODO://标记完成的功能
@@ -43,7 +40,7 @@ function todos(state = [], action) {
              ]
              */
             return state.map((todo, index) => {
-                if (index === action.index) {
+                if (todo.key === action.payload.key) {
                     return Object.assign({}, todo, {
                         isDone: !todo.isDone
                     })  //条件成立时的处理：箭头函数里的方法：es6语法的assign通过判断下标，更改当前是否完成的标识，
@@ -51,7 +48,7 @@ function todos(state = [], action) {
                 return todo  //下标不等于 index的时候，直接返回todo
             })
         default:
-            $.ajax({
+          /*  $.ajax({
                 url: "http://www.top-hill.cn/home/File/ajax",
                 //dataType: 'json',
                 async: false, // 同步
@@ -59,7 +56,7 @@ function todos(state = [], action) {
                     state = data
                     // this.setState({data: data});
                 }
-            });
+            }); */
             return state
 
     }

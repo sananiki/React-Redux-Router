@@ -31,7 +31,7 @@ import { addTodo, toggleTodo, setVisibilityFilter, VisibilityFilters } from './a
   }*/
   render() {
     // 通过调用 connect() 注入:
-    const { dispatch, visibleTodos, visibilityFilter,url,pollInterval } = this.props
+    const { dispatch, visibleTodos, visibilityFilter} = this.props
     //console.log("this.props")
     //console.log(this.props)
     
@@ -43,8 +43,8 @@ import { addTodo, toggleTodo, setVisibilityFilter, VisibilityFilters } from './a
         } />
         <TodoList
           todos={visibleTodos}
-          changeTodoState={index =>
-            dispatch(toggleTodo(index))
+          changeTodoState={key =>
+            dispatch(toggleTodo(key))
           }/>
         <Footer
           filter={visibilityFilter}
